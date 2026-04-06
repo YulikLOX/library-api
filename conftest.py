@@ -1,6 +1,6 @@
 import os
 import pytest
-import psycopg2
+import psycopg
 from app import create_app
 
 TEST_DB_CONFIG = {
