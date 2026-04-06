@@ -2,12 +2,14 @@ from flask import Flask, jsonify, request
 import psycopg
 from psycopg.rows import dict_row
 
+import os
+
 DEFAULT_DB_CONFIG = {
-    "host": "127.0.0.1",
-    "port": 55432,
-    "dbname": "library_db",
-    "user": "postgres",
-    "password": "secret",
+    "host": os.environ.get("POSTGRES_HOST", "127.0.0.1"),
+    "port": int(os.environ.get("POSTGRES_PORT", "5432")),
+    "dbname": os.environ.get("POSTGRES_DB", "library_test_db"),
+    "user": os.environ.get("POSTGRES_USER", "postgres"),
+    "password": os.environ.get("POSTGRES_PASSWORD", "secret"),
 }
 
 

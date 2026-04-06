@@ -1,10 +1,23 @@
+import os
+import pytest
+import psycopg2
+from app import create_app
+
+TEST_DB_CONFIG = {
+    "host": os.environ.get("POSTGRES_HOST", "localhost"),
+    "port": int(os.environ.get("POSTGRES_PORT", "5432")),
+    "database": os.environ.get("POSTGRES_DB", "library_test_db"),
+    "user": os.environ.get("POSTGRES_USER", "postgres"),
+    "password": os.environ.get("POSTGRES_PASSWORD", "secret"),
+}
+
 import pytest
 import psycopg
 from app import create_app
 
 ADMIN_DB_CONFIG = {
     "host": "127.0.0.1",
-    "port": 55432,
+    "port": 5432,
     "dbname": "postgres",
     "user": "postgres",
     "password": "secret",
@@ -12,7 +25,7 @@ ADMIN_DB_CONFIG = {
 
 TEST_DB_CONFIG = {
     "host": "127.0.0.1",
-    "port": 55432,
+    "port": 5432,
     "dbname": "library_test_db",
     "user": "postgres",
     "password": "secret",
